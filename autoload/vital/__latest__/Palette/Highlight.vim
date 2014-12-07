@@ -34,7 +34,7 @@ function! s:parse_to_name(highlight)
 endfunction
 
 
-function! s:parse(highlight, ...)
+function! s:parse(highlight)
 	let highlight = a:highlight
 	
 	if highlight !~ '^\w\+\s\+xxx\s'

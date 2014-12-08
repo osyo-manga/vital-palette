@@ -80,7 +80,7 @@ function! s:get(name, ...)
 	if !hlexists(a:name)
 		return {}
 	endif
-	let result = s:parse(substitute(s:capture(a:name), "\n", "", "g"), get(a:, 1, 0))
+	let result = s:parse(substitute(s:capture(a:name), "\n", "", "g"))
 	if has_key(result, "link") && get(a:, 1, 0)
 		return s:get(result.link, get(a:, 1, 0))
 	else

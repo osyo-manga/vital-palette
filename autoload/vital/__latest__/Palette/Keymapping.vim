@@ -25,9 +25,14 @@ function! s:capture(...)
 endfunction
 
 
+function! s:_keymapping(str)
+	return a:str =~ '^[nvoicsxl]\s'
+endfunction
+
+
 function! s:capture_list(...)
 	let mode = get(a:, 1, "")
-	return filter(split(s:capture(mode), "\n"), "v:val != ''")
+	return filter(split(s:capture(mode), "\n"), "s:_keymapping(v:val)")
 endfunction
 
 

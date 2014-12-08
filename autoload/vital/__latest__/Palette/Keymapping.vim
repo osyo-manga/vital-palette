@@ -45,7 +45,7 @@ endfunction
 
 function! s:parse_lhs_list(...)
 	let mode = get(a:, 1, "")
-	return map(s:capture_list(mode), "s:parse_lhs(v:val, mode)")
+	return filter(map(s:capture_list(mode), "s:parse_lhs(v:val, mode)"), 'v:val =~ ''\S\+''')
 endfunction
 
 

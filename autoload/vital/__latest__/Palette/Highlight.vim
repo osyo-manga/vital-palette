@@ -42,7 +42,7 @@ function! s:parse(highlight)
 	endif
 
 	let name = s:parse_to_name(a:highlight)
-	let result = { "name " : name }
+	let result = { "_name " : name }
 
 	if highlight =~ '^\w\+\s\+xxx cleared'
 		let result.cleared = 1

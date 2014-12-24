@@ -68,6 +68,9 @@ function! s:rhs_key_list(...)
 	return map(s:parse_lhs_list(mode), "maparg(v:val, mode, abbr, dict)")
 endfunction
 
+function! s:convert_sid(rhs, sid)
+	return substitute(a:rhs, "<SID>", "<SNR>" . a:sid . "_", "g")
+endfunction
 
 let &cpo = s:save_cpo
 unlet s:save_cpo

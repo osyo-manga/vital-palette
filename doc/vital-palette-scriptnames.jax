@@ -1,0 +1,65 @@
+*vital-Palette.Scriptnames.txt*		|:scriptnames| を取得するモジュール
+
+
+==============================================================================
+概要					*Vital.Palette.Scriptnames-introduction*
+
+*Vital.Palette.Scriptnames* は |:scriptnames|
+の出力結果をパースして取得するモジュールです。
+
+==============================================================================
+インターフェース			*Vital.Palette.Scriptnames-interface*
+
+------------------------------------------------------------------------------
+関数					*Vital.Palette.Scriptnames-functions*
+
+capture()				*Vital.Palette.Scriptnames.capture()*
+	|:scriptnames| の出力結果を返す。
+
+parse({src})				*Vital.Palette.Scriptnames.parse()*
+	|:scriptnames| の出力結果をパースして、以下の要素を持った辞書配列に
+	変換する。
+
+	"SID"  : スクリプト ID
+	"file" : スクリプトファイル名
+
+get()					*Vital.Palette.Scriptnames.get()*
+	|Vital.Palette.Scriptnames.parse()| に 
+	|Vital.Palette.Scriptnames.capture()| を適用した結果を返します。
+	また、この関数の結果は次に |SourcePre| が呼ばれるまでキャッシュし
+	たデータが使用されます。
+
+find({expr})				*Vital.Palette.Scriptnames.find()*
+	{expr} に最初にマッチした結果を返します。
+	結果は |Vital.Palette.Scriptnames.parse()| が返す配列の要素と同じ
+	形式です。
+	見つからなかった場合は空の辞書を返します。
+	{expr} には Vim script の式を記述し、以下の変数が式の中で使用で
+	きます。
+
+	"SID"  : スクリプト ID
+	"file" : スクリプトファイル名
+
+Example: >
+	let S = vital#of("vital").import("Palette.Scriptnames")
+	" スクリプトID が 3 というデータを探す
+	echo S.find("SID == 3")
+
+	" scriptnames.vim というデータを探す
+	echo S.find("file =~ 'scriptnames.vim$'")
+<
+
+select({expr})				*Vital.Palette.Scriptnames.select()*
+	|Vital.Palette.Scriptnames.find()| と使い方は同じですが、マッチした
+	すべての要素を返します。
+	見つからなかった場合は空の配列を返します。
+
+Example: >
+	let S = vital#of("vital").import("Palette.Scriptnames")
+	" ファイル名に 'unite/sources' が含まれているすべてのデータを返す
+	echo S.select("file =~ 'unite/sources'")
+<
+
+
+==============================================================================
+vim:tw=78:fo=tcq2mM:ts=8:ft=help:norl

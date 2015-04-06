@@ -1,0 +1,51 @@
+*vital-Palette.Function.txt*		|:function| を取得するモジュール
+
+==============================================================================
+目次						*vital-palette-function-contents*
+
+概要				|Vital.Palette.Function-introduction|
+インターフェース		|Vital.Palette.Function-interface|
+  関数				  |Vital.Palette.Function-functions|
+
+
+
+==============================================================================
+概要					*Vital.Palette.Function-introduction*
+
+*Vital.Palette.Function* は |:function| の出力結果をパースして取得するモジュー
+ルです。
+
+==============================================================================
+インターフェース			*Vital.Palette.Function-interface*
+
+------------------------------------------------------------------------------
+関数					*Vital.Palette.Function-functions*
+
+capture([{pat}])			*Vital.Palette.Function.capture()*
+	|:function| の出力結果を返す。
+	{pat} が渡されればそのパターンにマッチした結果を返す。
+	これは :function /{pat} と同等である。
+
+parse({src})				*Vital.Palette.Function.parse()*
+	|:funcname| の出力結果をパースして、以下の要素を持った辞書配列に
+	変換する。
+
+	"name"      : 関数名
+	"signature" : 関数の引数
+	"call"      : その関数への関数参照（|function()|）
+
+get({pat})				*Vital.Palette.Function.get()*
+	|Vital.Palette.Function.parse()| に 
+	|Vital.Palette.Function.capture()| を適用した結果を返します。
+
+get_by_SID({SID})		*Vital.Palette.Function.get_by_SID()*
+	|Vital.Palette.Function.get()| と同等だが {SID} で定義されている関数の
+	みを返す。
+
+get_by_scriptfile({file})	*Vital.Palette.Function.get_by_scriptfile()*
+	|Vital.Palette.Function.get()| と同等だが {file} で定義されている関数の
+	みを返す。
+
+
+==============================================================================
+vim:tw=78:fo=tcq2mM:ts=8:ft=help:norl

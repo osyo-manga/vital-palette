@@ -29,7 +29,7 @@ function! s:command(cmd, ...)
 	call extend(l:, get(a:, 1, {}))
 	call s:_verbosefile_push(tempname())
 	redir =>result
-	silent scriptnames
+	execute "silent" a:cmd
 	redir END
 	call s:_verbosefile_pop()
 	return result

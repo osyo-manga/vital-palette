@@ -2,8 +2,6 @@ scriptencoding utf-8
 let s:save_cpo = &cpo
 set cpo&vim
 
-call vital#of("vital").unload()
-
 
 function! s:_vital_loaded(V)
 	let s:V = a:V

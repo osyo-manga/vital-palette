@@ -24,6 +24,13 @@ function! s:test_parse()
 endfunction
 
 
-echo vital#of("vital").import("Palette.Highlight").get("TabLine", 0)
+function! s:test_set()
+	let Highlight = s:Highlight
+	let error = Highlight.get("Error")
+	call s:Highlight.set("VitalPaletteHighlightTest", error)
+	PP Highlight.get("VitalPaletteHighlightTest")
+	let error._name = "VitalPaletteHighlightTest"
+	OwlCheck Highlight.get("VitalPaletteHighlightTest") == error
+endfunction
 
 

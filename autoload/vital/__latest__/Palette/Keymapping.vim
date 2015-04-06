@@ -18,7 +18,9 @@ endfunction
 
 function! s:capture(...)
 	let mode = get(a:, 1, "")
-	if mode != "" && mode !~# "[nvoicsxl]"
+	if mode ==# "!"
+		return s:Message.capture("map!")
+	elseif mode != "" && mode !~# "[nvoicsxl]"
 		return ""
 	endif
 	return s:Message.capture(mode . "map")
@@ -44,6 +46,9 @@ endfunction
 
 function! s:parse_lhs(text, ...)
 	let mode = get(a:, 1, '[nvoicsxl]')
+	if mode ==# "!"
+		let mode = '[ic]'
+	endif
 	return matchstr(a:text, mode . '\s\+\zs\S\{-}\ze\s\+')
 endfunction
 

@@ -84,7 +84,7 @@ function! s:rhs_key_list(...)
 	for m in split(mode, '\zs')
 		let result += map(s:parse_lhs_list(m), "maparg(v:val, m, abbr, dict)")
 	endfor
-	return result
+	return filter(result, "empty(v:val) == 0")
 endfunction
 
 

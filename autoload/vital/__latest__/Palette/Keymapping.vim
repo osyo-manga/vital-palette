@@ -101,6 +101,9 @@ function! s:rhs_key_list(...)
 	return filter(result, "empty(v:val) == 0")
 endfunction
 
+function! s:convert_sid(rhs, sid)
+	return substitute(a:rhs, "<SID>", "<SNR>" . a:sid . "_", "g")
+endfunction
 
 let &cpo = s:save_cpo
 unlet s:save_cpo
